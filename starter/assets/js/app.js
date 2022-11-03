@@ -10,8 +10,8 @@ var countToDo       = document.getElementById("to-do-tasks-count");
 var countInProgress = document.getElementById("in-progress-tasks-count");
 var countDone       = document.getElementById("done-tasks-count");
 var title           = document.getElementById("title");
-var typeFeature     = document.querySelector('#Feature')
-var typeBug         = document.querySelector('#Bug')
+var typeFeature     = document.querySelector('#Feature');
+var typeBug         = document.querySelector('#Bug');
 var priority        = document.getElementById("priority");
 var statusTasks     = document.getElementById("status");
 var date            = document.getElementById("date");
@@ -231,19 +231,6 @@ function updateTask(element) {
     // GET TASK ATTRIBUTES FROM INPUTS
     var formInfo    = getDataFromForm();
     var taskId      = element.getAttribute('data-id');
-    // var elementTask = document.querySelector('button[data-id="' + taskId + '"]')
-
-
-    // console.log('elementTask: ', elementTask);
-    // console.log('formInfo : ', formInfo);
-
-    // Remplacer ancienne task par nouvelle task
-    // elementTask.querySelector('#buttonTitle').innerText         = formInfo.title
-    // elementTask.querySelector("#buttonType").innerHTML          = formInfo.type
-    // elementTask.querySelector("#buttonPriority").innerHTML      = formInfo.priority
-    // elementTask.querySelector("#buttonStatus").innerHTML        = formInfo.status
-    // elementTask.querySelector("#buttonDate").innerHTML          = formInfo.date
-    // elementTask.querySelector("#buttonDescription").innerHTML   = formInfo.description
 
     console.log(formInfo, "update")
     // Ajoutez object au Array
@@ -338,6 +325,7 @@ function deleteTask(element) {
 
 }
 
+
 function initTaskForm() {
     // Clear task form from data
     title.value = '';
@@ -369,9 +357,7 @@ function reloadTasks() {
 }
 
 
-
 var drag = null;
-
 function dragButton(){
     var items = document.querySelectorAll('.items');
     var lists = document.querySelectorAll('.list');
@@ -404,6 +390,13 @@ function dragButton(){
             countInProgress.innerHTML = '0';
             countDone.innerHTML = '0';
             createTask();
+            Swal.fire({
+                title               : "Update Successfully",
+                confirmButtonColor  : "#0d6efd",
+                icon                : "success",
+                iconColor           : "#0d6efd",
+                
+            })
 
         })
 
@@ -422,9 +415,10 @@ function dragButton(){
             list.addEventListener('drop', function(e){
                 list.append(drag)
                 this.parentElement.style.backgroundColor = '#fff'
+                
             })
-
         })
-
+        
     })
+    
 }
